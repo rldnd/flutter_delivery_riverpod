@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery/common/constant/colors.dart';
 import 'package:flutter_delivery/common/layout/default_layout.dart';
+import 'package:flutter_delivery/restaurant/view/restaurant_screen.dart';
 
 class RootTab extends StatefulWidget {
   const RootTab({super.key});
@@ -35,6 +36,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return DefaultLayout(
+      title: '배달 앱',
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
         selectedItemColor: C_PRIMARY,
@@ -76,7 +78,7 @@ class _RootTabState extends State<RootTab> with SingleTickerProviderStateMixin {
         controller: controller,
         physics: const NeverScrollableScrollPhysics(),
         children: const [
-          Center(child: Text('홈')),
+          Center(child: RestaurantScreen()),
           Center(child: Text('음식')),
           Center(child: Text('주문')),
           Center(child: Text('프로필'))
