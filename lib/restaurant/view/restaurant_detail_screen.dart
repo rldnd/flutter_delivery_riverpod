@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery/common/constant/data.dart';
+import 'package:flutter_delivery/common/dio/dio.dart';
 import 'package:flutter_delivery/common/layout/default_layout.dart';
 import 'package:flutter_delivery/product/component/product_card.dart';
 import 'package:flutter_delivery/restaurant/component/restaurant_card.dart';
@@ -22,6 +23,8 @@ class RestaurantDetailScreen extends StatelessWidget {
       dio,
       baseUrl: 'http://$ip/restaurant',
     );
+
+    dio.interceptors.add(const CustomInterceptor(storage: storage));
 
     return repository.getRestaurantDetail(id: id);
   }
