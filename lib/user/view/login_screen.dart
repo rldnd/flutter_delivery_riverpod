@@ -23,10 +23,6 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final dio = Dio();
-    const emulatorIp = '10.0.2.2';
-    const simulatorIp = '127.0.0.1:3000';
-
-    final ip = Platform.isIOS ? simulatorIp : emulatorIp;
 
     return DefaultLayout(
       child: SingleChildScrollView(
@@ -96,17 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: const Text('로그인'),
                 ),
                 TextButton(
-                  onPressed: () async {
-                    final response = await dio.post(
-                      'http://$ip/auth/token',
-                      options: Options(
-                        headers: {
-                          'authorization':
-                              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3RAY29kZWZhY3RvcnkuYWkiLCJzdWIiOiJmNTViMzJkMi00ZDY4LTRjMWUtYTNjYS1kYTlkN2QwZDkyZTUiLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTY4MzI3ODExMCwiZXhwIjoxNjgzMzY0NTEwfQ.AwZYBukmoGPwelUVjXJKyo9E0dGBmNra6vRcud4cJao',
-                        },
-                      ),
-                    );
-                  },
+                  onPressed: () async {},
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
                   ),

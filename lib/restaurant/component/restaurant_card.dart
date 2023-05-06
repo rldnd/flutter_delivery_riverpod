@@ -23,7 +23,7 @@ class RestaurantCard extends StatelessWidget {
   final List<String> tags;
 
   /// 평점 갯수
-  final int ratingCount;
+  final int ratingsCount;
 
   /// 배송 걸리는 시간
   final int deliveryTime;
@@ -32,15 +32,15 @@ class RestaurantCard extends StatelessWidget {
   final int deliveryFee;
 
   /// 평균 평점
-  final double rating;
+  final double ratings;
 
   const RestaurantCard({
     required this.deliveryFee,
     required this.deliveryTime,
     required this.image,
     required this.name,
-    required this.rating,
-    required this.ratingCount,
+    required this.ratings,
+    required this.ratingsCount,
     required this.tags,
     super.key,
   });
@@ -50,11 +50,11 @@ class RestaurantCard extends StatelessWidget {
     final iconTextData = [
       IconTextData(
         icon: Icons.star,
-        label: rating.toString(),
+        label: ratings.toString(),
       ),
       IconTextData(
         icon: Icons.receipt,
-        label: ratingCount.toString(),
+        label: ratingsCount.toString(),
       ),
       IconTextData(
         icon: Icons.timelapse_outlined,
@@ -62,7 +62,7 @@ class RestaurantCard extends StatelessWidget {
       ),
       IconTextData(
         icon: Icons.monetization_on,
-        label: '${deliveryFee == 0 ? '무료' : deliveryFee}원',
+        label: deliveryFee == 0 ? '무료' : '$deliveryFee원',
       ),
     ];
 
@@ -93,18 +93,20 @@ class RestaurantCard extends StatelessWidget {
             ),
             const SizedBox(height: 8.0),
             Row(
-              children: iconTextData.mapIndexed((index, data) {
-                if (index != iconTextData.length - 1) {
-                  return Row(
-                    children: [
-                      _IconText(icon: data.icon, label: data.label),
-                      renderDot(),
-                    ],
-                  );
-                }
+              children: iconTextData.mapIndexed(
+                (index, data) {
+                  if (index != iconTextData.length - 1) {
+                    return Row(
+                      children: [
+                        _IconText(icon: data.icon, label: data.label),
+                        renderDot(),
+                      ],
+                    );
+                  }
 
-                return _IconText(icon: data.icon, label: data.label);
-              }).toList(),
+                  return _IconText(icon: data.icon, label: data.label);
+                },
+              ).toList(),
             )
           ],
         ),
