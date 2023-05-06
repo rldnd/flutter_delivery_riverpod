@@ -65,7 +65,7 @@ class RestaurantCard extends StatelessWidget {
       deliveryFee: model.deliveryFee,
       deliveryTime: model.deliveryTime,
       image: Image.network(
-        'http://$ip${model.thumbUrl}',
+        model.thumbUrl,
         fit: BoxFit.cover,
       ),
       name: model.name,

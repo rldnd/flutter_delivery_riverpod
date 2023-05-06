@@ -1,5 +1,11 @@
+import 'package:flutter_delivery/common/utils/data_utils.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'restaurant_model.g.dart';
+
 enum RestaurantPriceRange { expensive, medium, cheap }
 
+@JsonSerializable()
 class RestaurantModel {
   final String id;
 
@@ -7,6 +13,7 @@ class RestaurantModel {
   final String name;
 
   /// 썸네일 주소
+  @JsonKey(fromJson: DataUtils.pathToUrl)
   final String thumbUrl;
 
   /// 태그들
@@ -39,19 +46,6 @@ class RestaurantModel {
     required this.thumbUrl,
   });
 
-  factory RestaurantModel.fromJson({required Map<String, dynamic> json}) {
-    return RestaurantModel(
-      deliveryFee: json['deliveryFee'],
-      deliveryTime: json['deliveryTime'],
-      id: json['id'],
-      name: json['name'],
-      priceRange: RestaurantPriceRange.values.firstWhere(
-        (range) => range.name == json['priceRange'],
-      ),
-      ratings: json['ratings'],
-      ratingsCount: json['ratingsCount'],
-      tags: List<String>.from(json['tags']),
-      thumbUrl: json['thumbUrl'],
-    );
-  }
+  factory RestaurantModel.fromJson(Map<String, dynamic> json) =>
+      _$RestaurantModelFromJson(json);
 }

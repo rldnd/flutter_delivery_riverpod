@@ -1,6 +1,11 @@
 import 'package:flutter_delivery/restaurant/model/restaurant_model.dart';
 import 'package:flutter_delivery/restaurant/model/restaurant_product_model.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'package:flutter_delivery/common/utils/data_utils.dart';
 
+part 'restaurant_detail_model.g.dart';
+
+@JsonSerializable()
 class RestaurantDetailModel extends RestaurantModel {
   /// 상세 내용
   final String detail;
@@ -22,27 +27,8 @@ class RestaurantDetailModel extends RestaurantModel {
     required this.products,
   });
 
-  factory RestaurantDetailModel.fromJson({required Map<String, dynamic> json}) {
-    return RestaurantDetailModel(
-      deliveryFee: json['deliveryFee'],
-      deliveryTime: json['deliveryTime'],
-      id: json['id'],
-      name: json['name'],
-      priceRange: RestaurantPriceRange.values.firstWhere(
-        (range) => range.name == json['priceRange'],
-      ),
-      ratings: json['ratings'],
-      ratingsCount: json['ratingsCount'],
-      tags: List<String>.from(json['tags']),
-      thumbUrl: json['thumbUrl'],
-      detail: json['detail'],
-      products: json['products']
-          .map<RestaurantProductModel>(
-            (product) => RestaurantProductModel.fromJson(
-              json: product,
-            ),
-          )
-          .toList(),
-    );
-  }
+  factory RestaurantDetailModel.fromJson(Map<String, dynamic> json) =>
+      _$RestaurantDetailModelFromJson(json);
+
+  Map<String, dynamic> toJson() => _$RestaurantDetailModelToJson(this);
 }
