@@ -1,3 +1,5 @@
+import 'package:flutter_delivery/common/constant/data.dart';
+
 class RestaurantProductModel {
   final String id;
   final String name;
@@ -12,4 +14,16 @@ class RestaurantProductModel {
     required this.name,
     required this.price,
   });
+
+  factory RestaurantProductModel.fromJson({
+    required Map<String, dynamic> json,
+  }) {
+    return RestaurantProductModel(
+      detail: json['detail'],
+      id: json['id'],
+      imgUrl: 'http://$ip${json['imgUrl']}',
+      name: json['name'],
+      price: json['price'],
+    );
+  }
 }

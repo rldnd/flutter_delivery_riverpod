@@ -38,12 +38,8 @@ class RestaurantDetailModel extends RestaurantModel {
       detail: json['detail'],
       products: json['products']
           .map<RestaurantProductModel>(
-            (product) => RestaurantProductModel(
-              detail: product['detail'],
-              id: product['id'],
-              imgUrl: product['imgUrl'],
-              name: product['name'],
-              price: product['price'],
+            (product) => RestaurantProductModel.fromJson(
+              json: product,
             ),
           )
           .toList(),
