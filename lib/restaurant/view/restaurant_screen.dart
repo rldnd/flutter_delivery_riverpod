@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery/common/constant/data.dart';
 import 'package:flutter_delivery/restaurant/component/restaurant_card.dart';
+import 'package:flutter_delivery/restaurant/model/restaurant_model.dart';
 
 class RestaurantScreen extends StatelessWidget {
   const RestaurantScreen({super.key});
@@ -33,18 +34,31 @@ class RestaurantScreen extends StatelessWidget {
             return ListView.separated(
               itemBuilder: (_, index) {
                 final item = snapshot.data![index];
+                final parsedItem = RestaurantModel(
+                  deliveryFee: item['deliveryFee'],
+                  deliveryTime: item['deliveryTime'],
+                  id: item['id'],
+                  name: item['name'],
+                  priceRange: RestaurantPriceRange.values.firstWhere(
+                    (range) => range.name == item['priceRange'],
+                  ),
+                  ratings: item['ratings'],
+                  ratingsCount: item['ratingsCount'],
+                  tags: List<String>.from(item['tags']),
+                  thumbUrl: item['thumbUrl'],
+                );
 
                 return RestaurantCard(
                   image: Image.network(
-                    'http://$ip${item['thumbUrl']}',
+                    'http://$ip${parsedItem.thumbUrl}',
                     fit: BoxFit.cover,
                   ),
-                  name: item['name'],
-                  tags: List<String>.from(item['tags']),
-                  deliveryFee: item['deliveryFee'],
-                  deliveryTime: item['deliveryTime'],
-                  ratings: item['ratings'],
-                  ratingsCount: item['ratingsCount'],
+                  name: parsedItem.name,
+                  tags: parsedItem.tags,
+                  deliveryFee: parsedItem.deliveryFee,
+                  deliveryTime: parsedItem.deliveryTime,
+                  ratings: parsedItem.ratings,
+                  ratingsCount: parsedItem.ratingsCount,
                 );
               },
               separatorBuilder: (_, index) {
