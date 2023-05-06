@@ -1,6 +1,8 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery/common/constant/colors.dart';
+import 'package:flutter_delivery/common/constant/data.dart';
+import 'package:flutter_delivery/restaurant/model/restaurant_model.dart';
 
 class IconTextData {
   final IconData icon;
@@ -44,6 +46,21 @@ class RestaurantCard extends StatelessWidget {
     required this.tags,
     super.key,
   });
+
+  factory RestaurantCard.fromRestaurantModel({required RestaurantModel model}) {
+    return RestaurantCard(
+      deliveryFee: model.deliveryFee,
+      deliveryTime: model.deliveryTime,
+      image: Image.network(
+        'http://$ip${model.thumbUrl}',
+        fit: BoxFit.cover,
+      ),
+      name: model.name,
+      ratings: model.ratings,
+      ratingsCount: model.ratingsCount,
+      tags: model.tags,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

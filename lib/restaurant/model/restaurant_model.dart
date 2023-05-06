@@ -38,4 +38,20 @@ class RestaurantModel {
     required this.tags,
     required this.thumbUrl,
   });
+
+  factory RestaurantModel.fromJson({required Map<String, dynamic> json}) {
+    return RestaurantModel(
+      deliveryFee: json['deliveryFee'],
+      deliveryTime: json['deliveryTime'],
+      id: json['id'],
+      name: json['name'],
+      priceRange: RestaurantPriceRange.values.firstWhere(
+        (range) => range.name == json['priceRange'],
+      ),
+      ratings: json['ratings'],
+      ratingsCount: json['ratingsCount'],
+      tags: List<String>.from(json['tags']),
+      thumbUrl: json['thumbUrl'],
+    );
+  }
 }
