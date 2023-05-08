@@ -82,3 +82,25 @@ class _RestaurantRepository implements RestaurantRepository {
     return requestOptions;
   }
 }
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$restaurantRepositoryHash() =>
+    r'bbf1fb7043157cad66f402cfb173cca15e1a2512';
+
+/// See also [restaurantRepository].
+@ProviderFor(restaurantRepository)
+final restaurantRepositoryProvider = Provider<RestaurantRepository>.internal(
+  restaurantRepository,
+  name: r'restaurantRepositoryProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$restaurantRepositoryHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef RestaurantRepositoryRef = ProviderRef<RestaurantRepository>;
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
