@@ -12,7 +12,7 @@ class RestaurantScreen extends ConsumerWidget {
     final data = ref.watch(restaurantNotifierProvider);
 
     return data.when(
-      loading: () => const CircularProgressIndicator(),
+      loading: () => const Center(child: CircularProgressIndicator()),
       data: (data) => Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: ListView.separated(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_delivery/common/constant/colors.dart';
 import 'package:flutter_delivery/common/view/splash_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -15,6 +16,8 @@ class _App extends StatelessWidget {
       child: MaterialApp(
         theme: ThemeData(
           fontFamily: 'NotoSans',
+          useMaterial3: true,
+          colorSchemeSeed: C_PRIMARY,
         ),
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),

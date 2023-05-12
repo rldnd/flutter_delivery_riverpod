@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery/common/constant/colors.dart';
-import 'package:flutter_delivery/common/constant/data.dart';
 import 'package:flutter_delivery/restaurant/model/restaurant_product_model.dart';
 
 class ProductCard extends StatelessWidget {

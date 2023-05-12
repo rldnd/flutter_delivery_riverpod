@@ -1,4 +1,4 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'cursor_pagination_model.g.dart';
 
@@ -27,6 +27,6 @@ class CursorPaginationMeta {
     required this.hasMore,
   });
 
-  factory CursorPaginationMeta.fromJson(Map<String, dynamic> json) =>
+  factory CursorPaginationMeta.fromJson(Map<String, Object?> json) =>
       _$CursorPaginationMetaFromJson(json);
 }
