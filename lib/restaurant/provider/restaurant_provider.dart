@@ -14,7 +14,7 @@ RestaurantModel? restaurantDetail(
 }) {
   final state = ref.watch(restaurantProvider);
 
-  if (state is! CursorPagination<RestaurantModel>) return null;
+  if (state is! CursorPagination) return null;
 
   return state.data.firstWhere((element) => element.id == id);
 }
@@ -94,5 +94,22 @@ class RestaurantStateNotifier extends StateNotifier<CursorPaginationBase> {
     } catch (e) {
       state = CursorPaginationError(message: e.toString());
     }
+  }
+
+  Future<void> getDetail({
+    required String id,
+  }) async {
+    if (state is! CursorPagination) await paginate();
+
+    if (state is! CursorPagination) return;
+
+    final pState = state as CursorPagination;
+    final response = await repository.getRestaurantDetail(id: id);
+
+    state = pState.copyWith(
+      data: pState.data
+          .map<RestaurantModel>((item) => item.id == id ? response : item)
+          .toList(),
+    );
   }
 }
