@@ -52,12 +52,15 @@ class _RestaurantDetailScreenState
           if (state is RestaurantDetailModel) renderLabel(),
           if (state is RestaurantDetailModel)
             renderProducts(models: state.products),
-          const SliverPadding(
+          SliverPadding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             sliver: SliverToBoxAdapter(
               child: RatingCard(
                 avatarImage: AssetImage('asset/image/misc/logo.png'),
-                images: [],
+                images: List.generate(
+                  5,
+                  (index) => Image.asset('asset/image/misc/logo.png'),
+                ).toList(),
                 rating: 4,
                 email: 'test@test.com',
                 content: '맛있습니다',
