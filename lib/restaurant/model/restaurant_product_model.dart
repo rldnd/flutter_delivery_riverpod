@@ -1,8 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_delivery/common/utils/data_utils.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'restaurant_product_model.g.dart';
 
+@immutable
 @JsonSerializable()
 class RestaurantProductModel {
   final String id;

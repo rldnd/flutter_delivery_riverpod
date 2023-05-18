@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_delivery/common/model/model_with_id.dart';
 import 'package:flutter_delivery/common/utils/data_utils.dart';
 import 'package:flutter_delivery/user/model/user_model.dart';
@@ -5,6 +6,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'rating_model.g.dart';
 
+@immutable
 @JsonSerializable()
 class RatingModel implements ModelWithId {
   @override

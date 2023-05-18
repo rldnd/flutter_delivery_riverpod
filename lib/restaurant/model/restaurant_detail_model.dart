@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_delivery/restaurant/model/restaurant_model.dart';
 import 'package:flutter_delivery/restaurant/model/restaurant_product_model.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_delivery/common/utils/data_utils.dart';
 
 part 'restaurant_detail_model.g.dart';
 
+@immutable
 @JsonSerializable()
 class RestaurantDetailModel extends RestaurantModel {
   /// 상세 내용

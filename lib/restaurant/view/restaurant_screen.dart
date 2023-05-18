@@ -27,9 +27,6 @@ class _RestaurantScreenState extends ConsumerState<RestaurantScreen> {
       controller: controller,
       provider: ref.read(restaurantProvider.notifier),
     );
-    // if (controller.offset > controller.position.maxScrollExtent - 300) {
-    //   ref.read(restaurantProvider.notifier).paginate(fetchMore: true);
-    // }
   }
 
   @override
