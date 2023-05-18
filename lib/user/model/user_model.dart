@@ -8,12 +8,12 @@ class UserModel {
   final String id;
   final String username;
   @JsonKey(fromJson: DataUtils.pathToUrl)
-  final String imgUrl;
+  final String imageUrl;
 
   const UserModel({
     required this.id,
     required this.username,
-    required this.imgUrl,
+    required this.imageUrl,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>
