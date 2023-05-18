@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery/common/model/cursor_pagination_model.dart';
+import 'package:flutter_delivery/common/utils/pagination_utils.dart';
 import 'package:flutter_delivery/restaurant/component/restaurant_card.dart';
 import 'package:flutter_delivery/restaurant/provider/restaurant_provider.dart';
 import 'package:flutter_delivery/restaurant/view/restaurant_detail_screen.dart';
@@ -22,9 +23,13 @@ class _RestaurantScreenState extends ConsumerState<RestaurantScreen> {
   }
 
   void scrollListener() {
-    if (controller.offset > controller.position.maxScrollExtent - 300) {
-      ref.read(restaurantProvider.notifier).paginate(fetchMore: true);
-    }
+    PaginationUtils.paginate(
+      controller: controller,
+      provider: ref.read(restaurantProvider.notifier),
+    );
+    // if (controller.offset > controller.position.maxScrollExtent - 300) {
+    //   ref.read(restaurantProvider.notifier).paginate(fetchMore: true);
+    // }
   }
 
   @override
