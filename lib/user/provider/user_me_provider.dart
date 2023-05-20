@@ -1,7 +1,7 @@
 import 'package:flutter_delivery/common/constant/data.dart';
 import 'package:flutter_delivery/common/secure_storage/secure_storage.dart';
 import 'package:flutter_delivery/user/model/user_model.dart';
-import 'package:flutter_delivery/user/provider/auth_repository.dart';
+import 'package:flutter_delivery/user/repository/auth_repository.dart';
 import 'package:flutter_delivery/user/repository/user_me_repository.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
