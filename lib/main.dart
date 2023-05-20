@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_delivery/common/constant/colors.dart';
-import 'package:flutter_delivery/common/view/splash_screen.dart';
+import 'package:flutter_delivery/common/provider/go_router_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const _App());
+  runApp(const ProviderScope(child: _App()));
 }
 
-class _App extends StatelessWidget {
+class _App extends ConsumerWidget {
   const _App({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return ProviderScope(
-      child: MaterialApp(
-        theme: ThemeData(
-          fontFamily: 'NotoSans',
-          useMaterial3: true,
-          colorSchemeSeed: C_PRIMARY,
-        ),
-        debugShowCheckedModeBanner: false,
-        home: const SplashScreen(),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
+
+    return MaterialApp.router(
+      theme: ThemeData(
+        fontFamily: 'NotoSans',
+        useMaterial3: true,
+        colorSchemeSeed: C_PRIMARY,
       ),
+      debugShowCheckedModeBanner: false,
+      routerConfig: router,
     );
   }
 }
