@@ -11,7 +11,7 @@ part 'auth_repository.g.dart';
 @Riverpod(keepAlive: true)
 AuthRepository authRepository(AuthRepositoryRef ref) {
   final dio = ref.watch(dioProvider);
-  return AuthRepository(dio: dio, baseUrl: 'http://$ip');
+  return AuthRepository(dio: dio, baseUrl: 'http://$ip/auth');
 }
 
 class AuthRepository {

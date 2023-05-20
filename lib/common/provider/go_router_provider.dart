@@ -6,7 +6,8 @@ part 'go_router_provider.g.dart';
 
 @Riverpod(keepAlive: true)
 GoRouter router(RouterRef ref) {
-  final provider = ref.watch(authProvider);
+  final provider = ref.read(authProvider);
+
   return GoRouter(
     routes: provider.routes,
     redirect: provider.redirectLogic,

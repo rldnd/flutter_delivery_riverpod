@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/widgets.dart';
+import 'package:flutter_delivery/common/constant/data.dart';
+import 'package:flutter_delivery/common/secure_storage/secure_storage.dart';
 import 'package:flutter_delivery/common/view/root_tab.dart';
 import 'package:flutter_delivery/common/view/splash_screen.dart';
 import 'package:flutter_delivery/restaurant/view/restaurant_detail_screen.dart';
@@ -22,16 +26,24 @@ class AuthProvider extends ChangeNotifier {
     });
   }
 
-  String? redirectLogic(BuildContext context, GoRouterState state) {
+  FutureOr<String?> redirectLogic(
+      BuildContext context, GoRouterState state) async {
     final me = ref.read(userMeProvider);
+    final storage = ref.read(secureStorageProvider);
+    final refreshToken = await storage.read(key: REFRESH_TOKEN_KEY);
     final loggingIn = state.location == '/login';
-
-    if (me == const AsyncData(null)) {
-      return loggingIn ? null : '/login';
-    }
+    final isSplash = state.location == '/splash';
 
     if (me is AsyncData) {
-      return loggingIn || state.location == '/splash' ? '/' : null;
+      if (me.value == null) {
+        return loggingIn
+            ? null
+            : refreshToken == null
+                ? '/login'
+                : null;
+      } else {
+        return loggingIn || isSplash ? '/' : null;
+      }
     }
 
     if (me is AsyncError) {
@@ -49,6 +61,7 @@ class AuthProvider extends ChangeNotifier {
           routes: [
             GoRoute(
               path: 'restaurant/:rid',
+              name: RestaurantDetailScreen.routeName,
               builder: (_, state) => RestaurantDetailScreen(
                 id: state.pathParameters['rid']!,
               ),
