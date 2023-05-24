@@ -2,19 +2,19 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'cursor_pagination_model.g.dart';
 
-abstract class CursorPaginationBase {}
+sealed class CursorPaginationBase {}
 
-class CursorPaginationError extends CursorPaginationBase {
+final class CursorPaginationError extends CursorPaginationBase {
   final String message;
 
   CursorPaginationError({required this.message});
 }
 
-class CursorPaginationLoading extends CursorPaginationBase {}
+final class CursorPaginationLoading extends CursorPaginationBase {}
 
 // TODO: freezed union
 @JsonSerializable(genericArgumentFactories: true)
-class CursorPagination<T> extends CursorPaginationBase {
+final class CursorPagination<T> extends CursorPaginationBase {
   final CursorPaginationMeta meta;
   final List<T> data;
 
@@ -62,14 +62,14 @@ class CursorPaginationMeta {
   }
 }
 
-class CursorPaginationRefetching<T> extends CursorPagination<T> {
+final class CursorPaginationRefetching<T> extends CursorPagination<T> {
   CursorPaginationRefetching({
     required super.meta,
     required super.data,
   });
 }
 
-class CursorPaginationFetchingMore<T> extends CursorPagination<T> {
+final class CursorPaginationFetchingMore<T> extends CursorPagination<T> {
   CursorPaginationFetchingMore({
     required super.meta,
     required super.data,
