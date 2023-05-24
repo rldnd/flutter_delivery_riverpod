@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart' hide Headers;
 import 'package:flutter_delivery/common/constant/data.dart';
 import 'package:flutter_delivery/common/dio/dio.dart';
+import 'package:flutter_delivery/user/model/basket_item_model.dart';
+import 'package:flutter_delivery/user/model/update_basket_body.dart';
 import 'package:flutter_delivery/user/model/user_model.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -21,4 +23,14 @@ abstract class UserMeRepository {
   @GET('/')
   @Headers({ACCESS_TOKEN_KEY: true})
   Future<UserModel> getMe();
+
+  @GET('/basket')
+  @Headers({ACCESS_TOKEN_KEY: true})
+  Future<List<BasketItemModel>> getBasket();
+
+  @PATCH('/basket')
+  @Headers({ACCESS_TOKEN_KEY: true})
+  Future<List<BasketItemModel>> updateBasket({
+    @Body() required UpdateBasketBody body,
+  });
 }
