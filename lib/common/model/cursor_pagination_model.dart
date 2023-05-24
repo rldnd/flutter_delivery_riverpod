@@ -12,6 +12,7 @@ class CursorPaginationError extends CursorPaginationBase {
 
 class CursorPaginationLoading extends CursorPaginationBase {}
 
+// TODO: freezed union
 @JsonSerializable(genericArgumentFactories: true)
 class CursorPagination<T> extends CursorPaginationBase {
   final CursorPaginationMeta meta;
