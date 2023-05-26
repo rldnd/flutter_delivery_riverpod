@@ -10,7 +10,7 @@ final productProvider =
   return ProductStateNotifier(repository: repository);
 });
 
-class ProductStateNotifier
+final class ProductStateNotifier
     extends PaginationProvider<ProductModel, ProductRepository> {
   ProductStateNotifier({required super.repository});
 }

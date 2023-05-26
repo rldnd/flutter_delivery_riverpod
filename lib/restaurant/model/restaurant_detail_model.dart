@@ -8,7 +8,7 @@ part 'restaurant_detail_model.g.dart';
 
 @immutable
 @JsonSerializable()
-class RestaurantDetailModel extends RestaurantModel {
+final class RestaurantDetailModel extends RestaurantModel {
   /// 상세 내용
   final String detail;
 

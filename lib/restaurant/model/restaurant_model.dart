@@ -9,7 +9,7 @@ enum RestaurantPriceRange { expensive, medium, cheap }
 
 @immutable
 @JsonSerializable()
-class RestaurantModel implements ModelWithId {
+base class RestaurantModel implements ModelWithId {
   @override
   final String id;
 

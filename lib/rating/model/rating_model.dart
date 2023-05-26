@@ -8,7 +8,7 @@ part 'rating_model.g.dart';
 
 @immutable
 @JsonSerializable()
-class RatingModel implements ModelWithId {
+final class RatingModel implements ModelWithId {
   @override
   final String id;
   final UserModel user;

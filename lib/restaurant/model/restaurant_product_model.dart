@@ -6,7 +6,7 @@ part 'restaurant_product_model.g.dart';
 
 @immutable
 @JsonSerializable()
-class RestaurantProductModel {
+final class RestaurantProductModel {
   final String id;
   final String name;
   @JsonKey(fromJson: DataUtils.pathToUrl)
