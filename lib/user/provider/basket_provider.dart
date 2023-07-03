@@ -1,7 +1,7 @@
+import 'package:collection/collection.dart';
 import 'package:flutter_delivery/product/model/product_model.dart';
 import 'package:flutter_delivery/user/model/basket_item_model.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:collection/collection.dart';
 
 part 'basket_provider.g.dart';
 
